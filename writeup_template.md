@@ -1,7 +1,3 @@
-#**Behavioral Cloning**
-
----
-
 **Behavioral Cloning Project**
 
 The goals / steps of this project are the following:
@@ -22,11 +18,11 @@ The goals / steps of this project are the following:
 [image6]: ./examples/placeholder_small.png "Normal Image"
 [image7]: ./examples/placeholder_small.png "Flipped Image"
 
-## Rubric Points
-###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.
+**Rubric Points**
+Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.
 
 ---
-####1.Files Submitted & Code Quality
+**1.Files Submitted & Code Quality**
 
 My project includes the following files:
 * model.py containing the script to create and train the model
@@ -34,19 +30,19 @@ My project includes the following files:
 * model.h5 containing a trained convolution neural network
 * writeup_report.md summarizing the results
 
-####2. Submission includes functional code
+**2. Submission includes functional code**
 Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing
 ```sh
 python drive.py model.h5
 ```
 
-####3. Submission code is usable and readable
+**3. Submission code is usable and readable**
 
 The model.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.
 
-####4.Model Architecture and Training Strategy
+**4.Model Architecture and Training Strategy**
 
-#####1. Solution Design Approach
+1. Solution Design Approach
 The Nvidia model was adopted for training, because it gave better result after experimenting with other kinds of model (e.g. ). The network consists of 9 layers, including a normalization layer, 5 convolutional layers and 3 fully connected layers. Converse to the Nvidia model, input image was split to HSV planes before been passed to the network.
 
 Image was normalized in the first layer. According to the Nvidia paper, this enables normalization also to be accelerated via GPU processing.
@@ -55,9 +51,9 @@ Convolution were used in the first three layers with 2x2 strides and a 5x5 kerne
 
 The convolutional layers were followed by three fully connected layers which then outputs the steering angle.
 
-#####2. Final Model Architecture
+2. Final Model Architecture
 
-| Layer (type)                     Output Shape          Param #     Connected to             |
+| Layer (type)                   | Output Shape       |  Param #  |  Connected to             |
 |:------------------------------:|:------------------:|:---------:|:-------------------------:|
 | lambda_1 (Lambda)              |  (None, 66, 200, 3)|   0       |    lambda_input_1[0]0]    |
 |                                |                    |           |                           |
@@ -89,21 +85,21 @@ Total params: 252,219
 Trainable params: 252,219
 Non-trainable params: 0
 
-#####3. Model Visualization
+3. Model Visualization
 
 ![alt text][image1]
 
-#####4. Attempts to reduce overfitting in the model
+4. Attempts to reduce overfitting in the model**
 
 Overfitting was reduced by using Dropout (0.2) between first two layer.
 The model was trained and validated on different data sets to ensure that the model was not overfitting. The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
 
-#####5. Model parameter tuning
+5. Model parameter tuning**
 An Adam optimizer was used for optimization. This requires little or no tunning as the learning rate (0.0001) is adaptive. In addition, checkpoint and early stop mechanisms were used during training to chose best training model by monitoring the validation loss and stopping the training if the loss does not reduce in three consecutive epochs.
 
 The model includes RELU layers to introduce nonlinearity.
 
-####3. Creation of the Training Set & Training Process
+**3. Creation of the Training Set & Training Process**
 
 Training data was chosen to keep the vehicle driving on the road. I used a combination of center lane driving, recovering from the left and right sides of the road .
 
