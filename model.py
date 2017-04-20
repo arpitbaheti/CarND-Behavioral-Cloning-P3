@@ -119,7 +119,7 @@ train_samples, validation_samples = train_test_split(samples, test_size=0.2)
 
 def crop_image(image):
 
-    image = image[70: 145, 0: image.shape[1]]
+    image = image[60: 135, 0: image.shape[1]]
 
     return image
 

@@ -64,7 +64,7 @@ def telemetry(sid, data):
         image_array = np.asarray(image)
 
         # perform pre-rocessing on image
-        image_array = image_array[70:145,0:320]
+        image_array = image_array[60:135,0:320]
         image_array = cv2.resize(image_array, (200,66))
         image_array = cv2.cvtColor(image_array,cv2.COLOR_RGB2HSV)
 
