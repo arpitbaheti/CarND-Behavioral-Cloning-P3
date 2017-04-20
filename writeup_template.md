@@ -10,13 +10,18 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/placeholder.png "Model Visualization"
-[image2]: ./examples/placeholder.png "Grayscaling"
-[image3]: ./examples/placeholder_small.png "Recovery Image"
-[image4]: ./examples/placeholder_small.png "Recovery Image"
-[image5]: ./examples/placeholder_small.png "Recovery Image"
-[image6]: ./examples/placeholder_small.png "Normal Image"
-[image7]: ./examples/placeholder_small.png "Flipped Image"
+[image1]: ./examples/nvidia_architecture.png "Model Visualization"
+[image2]: ./examples/bright-augment.png "Brightness augment"
+[image3]: ./examples/recovery.png "Recovery Image"
+[image4]: ./examples/recovery-1.png "Recovery Image"
+[image5]: ./examples/center-drive.png "Center drive Image"
+[image6]: ./examples/normal-image.png "Normal Image"
+[image7]: ./examples/flip-image.png "Flipped Image"
+[image8]: ./examples/turn-drive.png "turn drive Image"
+[image9]: ./examples/bridge.png "Bridge drive Image"
+[image10]: ./examples/mud-drive.png "mud drive Image"
+[image11]: ./examples/resize-image.png "resize Image"
+[video1]: ./video.mp4 "Video of drive"
 
 **Rubric Points**
 Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.
@@ -29,6 +34,8 @@ My project includes the following files:
 * drive.py for driving the car in autonomous mode
 * model.h5 containing a trained convolution neural network
 * writeup_report.md summarizing the results
+* video.mp4 video of running car in autonomous mode
+![alt text][video1]
 
 **2. Submission includes functional code**
 Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing
@@ -105,26 +112,33 @@ Training data was chosen to keep the vehicle driving on the road. I used a combi
 
 To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
 
-![alt text][image2]
+![alt text][image5]
 
 I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to .... These images show what a recovery looks like starting from ... :
 
 ![alt text][image3]
 ![alt text][image4]
-![alt text][image5]
 
 To augment the data sat, I also flipped images and angles thinking that this would increase the dataset and remove the bias of left turn on the track, here is an image that has then been flipped:
 
 ![alt text][image6]
 ![alt text][image7]
 
+Few images more while driving near the mud, on the bridge and sharp turn:
+
+![alt text][image8]
+![alt text][image9]
+![alt text][image10]
 
 After the collection process, I had 42000 number of data points. I then preprocessed this data by 
 1. Normalization
 2. Flipping images Randomly
-3. Since the original image size is 160x320 pixels, we crop image 70 pixel from top and 25 pixel from bottom to obtain the region of interest.
+3. Since the original image size is 160x320 pixels, we crop image 60 pixel from top and 35 pixel from bottom to obtain the region of interest.
+![alt text][image11]
 4. Take image from all the camera with the correction factor of 0.2
 5. We simulate different brightness occasions by converting image to HSV channel and randomly scaling the V channel.
+
+![alt text][image2]
 
 I finally randomly shuffled the data set and put 20% of the data into a validation set.
 
